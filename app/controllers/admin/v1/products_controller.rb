@@ -1,7 +1,7 @@
 module Admin::V1
   class ProductsController < ApiController
     before_action :load_product, only: %i(show update destroy)
-
+    
     def index
       @loading_service = Admin::ModelLoadingService.new(Product.all, searchable_params)
       @loading_service.call
@@ -30,19 +30,25 @@ module Admin::V1
 
     private
 
-    def searchable_params
-      params.permit({ search: :name }, { order: {} }, :page, :length)
-    end
-
     def load_product
       @product = Product.find(params[:id])
     end
 
+    def searchable_params
+      params.permit({ search: :name }, { order: {} }, :page, :length)
+    end
+
+    def run_service
+      @saving_service = Admin::ProductSavingService.new(product_params.to_h, @product)
+      @saving_service.call
+      @product = @saving_service.product
+      render :show
+    end
+
     def product_params
       return {} unless params.has_key?(:product)
-      permitted_params = params.required(:product).permit(:id, :name, :description, :image,
-                                                        :price, :productable, :status, category_ids: []
-      )
+      permitted_params = params.require(:product).permit(:id, :name, :description, :image, :price, :productable,
+                                                         :status, :featured, category_ids: [])
       permitted_params.merge(productable_params)
     end
 
@@ -55,13 +61,6 @@ module Admin::V1
 
     def game_params
       params.require(:product).permit(:mode, :release_date, :developer, :system_requirement_id)
-    end
-
-    def run_service(product = nil)
-      @saving_service = Admin::ProductSavingService.new(product_params.to_h, @product)
-      @saving_service.call
-      @product = @saving_service.product
-      render :show
     end
   end
 end

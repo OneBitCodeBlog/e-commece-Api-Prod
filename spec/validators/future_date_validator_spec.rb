@@ -1,13 +1,13 @@
 require "rails_helper"
 
-class Validator
+class Validatable
   include ActiveModel::Validations
   attr_accessor :date
   validates :date, future_date: true
 end
 
 describe FutureDateValidator do
-  subject { Validator.new }
+  subject { Validatable.new }
 
   context "when date is before current date" do
     before { subject.date = 1.day.ago }

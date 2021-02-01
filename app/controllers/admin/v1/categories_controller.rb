@@ -1,6 +1,6 @@
 module Admin::V1
   class CategoriesController < ApiController
-    before_action :load_category, only: [:update, :destroy, :show]
+    before_action :load_category, only: [:show, :update, :destroy]
 
     def index
       @loading_service = Admin::ModelLoadingService.new(Category.all, searchable_params)
@@ -38,7 +38,7 @@ module Admin::V1
 
     def category_params
       return {} unless params.has_key?(:category)
-      params.require(:category).permit(:name)
+      params.require(:category).permit(:id, :name)
     end
 
     def save_category!

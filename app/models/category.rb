@@ -1,9 +1,9 @@
 class Category < ApplicationRecord
-  validates :name, presence: true, uniqueness: { case_sensitive: false }
+  include LikeSearchable
+  include Paginatable
 
   has_many :product_categories, dependent: :destroy
   has_many :products, through: :product_categories
-
-  include NameSearchable
-  include Paginatable
+  
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
 end
