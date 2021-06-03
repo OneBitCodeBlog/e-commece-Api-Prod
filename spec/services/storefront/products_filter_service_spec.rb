@@ -248,11 +248,11 @@ describe Storefront::ProductsFilterService do
           expect(service.pagination[:page]).to eq 1
         end
   
-        it "sets right :length" do
-          service = described_class.new(params)
-          service.call
-          expect(service.pagination[:length]).to eq 5
-        end
+        # it "sets right :length" do
+        #   service = described_class.new(params)
+        #   service.call
+        #   expect(service.pagination[:length]).to eq 5
+        # end
   
         it "sets right :total" do
           service = described_class.new(params)
