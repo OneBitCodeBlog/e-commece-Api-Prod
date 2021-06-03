@@ -14,6 +14,8 @@ class Order < ApplicationRecord
 
   DAYS_TO_DUE = 7
 
+  has_many :line_items
+
 
   def due_date
     self.created_at + DAYS_TO_DUE.days
