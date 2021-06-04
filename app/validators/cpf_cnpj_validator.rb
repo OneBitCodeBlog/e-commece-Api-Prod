@@ -1,4 +1,4 @@
-require 'cpf_cnpj'
+require "cpf_cnpj"
 
 class CpfCnpjValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)

@@ -1,6 +1,6 @@
 pt-BR:
-  activerecord: c 
+  activerecord:
     errors:
       messages:
         future_date: "Deve ser uma data futura"
-        invalidcpf_cnpj: "Deve ser um CPF ou CNPJ válido"
+        invalid_cpf_cnpj: "deve ser um CPF ou CNPJ válido"
