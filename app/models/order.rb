@@ -26,6 +26,8 @@ class Order < ApplicationRecord
 
   has_many :line_items
 
+  has_many :juno_changers, class_name: 'Juno::Charge'
+
 
   def due_date
     self.created_at + DAYS_TO_DUE.days
