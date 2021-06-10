@@ -10,6 +10,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 
+gem 'httparty', '~> 0.18.1'
+
 gem 'cpf_cnpj', '~> 0.5.0'
 
 # Auth
