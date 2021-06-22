@@ -34,14 +34,14 @@ describe JunoApi::Auth do
   context "when call #access_token" do
     let(:first_response) do
       double(
-        parsed_response: { 'access_token' => SecureRandom.hex, 'expires_in' => 1.day.from_now.to_i },
+        parsed_response: { 'access_token' => SecureRandom.hex, 'expires_in' => 1.day },
         code: 200
       )
     end
 
     let(:second_response) do
       double(
-        parsed_response: { 'access_token' => SecureRandom.hex, 'expires_in' => 1.day.from_now.to_i },
+        parsed_response: { 'access_token' => SecureRandom.hex, 'expires_in' => 1.day },
         code: 200
       )
     end
