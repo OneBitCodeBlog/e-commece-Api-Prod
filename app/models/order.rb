@@ -26,7 +26,7 @@ class Order < ApplicationRecord
 
   has_many :line_items
 
-  has_many :juno_changers, class_name: 'Juno::Charge'
+  has_many :juno_charges, class_name: 'Juno::Charge'
 
 
   def due_date
