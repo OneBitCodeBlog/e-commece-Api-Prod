@@ -22,7 +22,7 @@ RSpec.describe Order, type: :model do
   it { is_expected.to belong_to :user }
   it { is_expected.to belong_to(:coupon).optional }
 
-  it { is_expected.to have_many(:juno_changes)} 
+  it { is_expected.to have_many(:juno_charges)} 
 
   it "validates if :document is as CPF" do
     subject.document = "111.561.236-63"
@@ -45,6 +45,14 @@ RSpec.describe Order, type: :model do
   it "receives :pending_payment status as default on creation" do
     subject = create(:order, status: nil)
     expect(subject.status).to eq "processing_order"
+  end
+
+  it "schedules a job for Juno charge creation after creation" do
+    order = build(:order)
+    order_params = { card_hash: order.card_hash, document: order.document, address: order.address.attributes }
+    expect do
+      order.save!
+    end.to have_enqueued_job(Juno::ChargeCreationJob).with(order, order_params)
   end
 
   context "when :payment_type is :credit_card and is on :create process" do

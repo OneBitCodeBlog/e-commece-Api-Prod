@@ -1,5 +1,6 @@
 class CheckoutMailer < ApplicationMailer
   def success
+    p 'here'
     mail(to: params[:order].user.email, subject: default_i18n_subject(order_number: params[:order].id))
   end
 
@@ -8,6 +9,7 @@ class CheckoutMailer < ApplicationMailer
   end
 
   def payment_error(message)
+    @message = message
     mail(to: params[:order].user.email, subject: default_i18n_subject(order_number: params[:order].id))
   end
 end

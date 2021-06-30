@@ -18,7 +18,6 @@ module Juno
     end
 
     private
-    
 
     def create_charges
       charges = JunoApi::Charge.new.create!(@order)
@@ -61,7 +60,7 @@ module Juno
       @order.update!(status: :payment_denied)
       CheckoutMailer.with(order: @order).payment_error(message).deliver_later
     end
-
+    
     def set_generic_error
       @order.update!(status: :processing_error)
       CheckoutMailer.with(order: @order).generic_error.deliver_later

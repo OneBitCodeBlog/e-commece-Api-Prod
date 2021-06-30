@@ -4,5 +4,6 @@ FactoryBot.define do
     payed_price { Faker::Commerce.price(range: 100.00..200.00) }
     order
     product
+    status { :waiting_order }
   end
 end

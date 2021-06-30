@@ -21,13 +21,13 @@ module Storefront
 
     def check_presence_of_itens_params
       unless @params.has_key?(:items)
-        @errors[:items] = I18n.t('storefront/checkout_processor_serive.errors.items.presence')
+        @errors[:items] = I18n.t('storefront/checkout_processor_service.errors.items.presence')
       end
     end
 
     def check_emptyness_of_items_params
       if @params[:items].blank?
-        @errors[:items] = I18n.t('storefront/checkout_processor_serive.errors.items.empty')
+        @errors[:items] = I18n.t('storefront/checkout_processor_service.errors.items.empty')
       end
     end
 
@@ -36,7 +36,7 @@ module Storefront
       @coupon = Coupon.find(@params[:coupon_id])
       @coupon.validate_use!
     rescue Coupon::InvalidUse, ActiveRecord::RecordNotFound
-      @errors[:coupon] = I18n.t('storefront/checkout_processor_serive.errors.coupon.invalid')
+      @errors[:coupon] = I18n.t('storefront/checkout_processor_service.errors.coupon.invalid')
     end
 
     def do_checkout

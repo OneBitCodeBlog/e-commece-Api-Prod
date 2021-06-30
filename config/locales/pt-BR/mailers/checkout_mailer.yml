@@ -9,14 +9,14 @@ pt-BR:
         html: O seu boleto está <a href="%{billet_link}">neste link</a> =D
       credit_card_payment: |
         O pagamento já foi um sucesso! Em breve vamos liberar o seu pedido =)
-      generic_error:
-          subject: "Ocorreu um erro com o seu pedido #%{order_number}"
-          title: "Encontramos um erro ao processar o seu pedido #%{order_number}"
-          body:
-            html: |
-              Infelizmente não conseguimos processar o seu pedido.<br/>
-              Tente novamente daqui alguns minutos. Se o erro persistir o nosso suporte estará à sua disposição =)
-      payment_error:
+    generic_error:
+        subject: "Ocorreu um erro com o seu pedido #%{order_number}"
+        title: "Encontramos um erro ao processar o seu pedido #%{order_number}"
+        body:
+          html: |
+            Infelizmente não conseguimos processar o seu pedido.<br/>
+            Tente novamente daqui alguns minutos. Se o erro persistir o nosso suporte estará à sua disposição =)
+    payment_error:
         subject: "Ocorreu um erro com o seu pedido #%{order_number}"
         title: "Encontramos um erro no pagamento do seu pedido #%{order_number}"
         body:
