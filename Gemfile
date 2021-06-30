@@ -5,6 +5,8 @@ ruby '2.7.1'
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 
+gem 'sidekiq', '~> 6.1.3'
+
 # Basic
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pg', '>= 0.18', '< 2.0'
